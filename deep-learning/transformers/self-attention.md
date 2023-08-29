@@ -9,7 +9,8 @@ Agora, em Self-Attention, a ideia é fazer um embedding diferenciado de cada pal
 {% endhint %}
 
 O mecanismo de Self-Attention associa pesos às palavras vizinhas em uma frase de modo que as palavras vizinhas com os maiores pesos têm maior relevância contextual em relação à palavra sendo analisada.
-\subsection{Como obter esses vetores contextualizados? Novo embedding?}
+
+## Como obter esses vetores contextualizados? Novo embedding?
 Agora, como podemos obter esses pesos que são associados às palavras em uma frase (vetores de contexto)?
 O primeiro passo é definir um vetor $$s_{ij}$$ tal que:
 $$
@@ -48,10 +49,10 @@ $$
 y_i = \sum^n_{j=1}w_{ij} \cdot v_j
 $$
 
-Note que, dessa maneira, teremos $n$ vetores $$y_i$$ que são somas dos vetores das palavras multiplicadas pelos pesos $$w_{ij}$$.
+Note que, dessa maneira, teremos $$n$$ vetores $$y_i$$ que são somas dos vetores das palavras multiplicadas pelos pesos $$w_{ij}$$.
 
 {% hint style="info" %}
-O vetor $$y_i$$ será mais influenciado pelas palavras $$v_j$$ tais que $$w_ij$$ é maior. Isto é, palavras $$j$$ com maior relação com a palavra $$i$$.
+O vetor $$y_i$$ será mais influenciado pelas palavras $$v_j$$ tais que $$w_{ij}$$ é maior. Isto é, palavras $$j$$ com maior relação com a palavra $$i$$.
 {% endhint %}
 
 $$y_i$$ é a forma contextualizada do vetor $$v_i$$. Note que o termo $$w_{ij} \cdot v_i$$ de $$y_i$$ é tal que $$w_{ij} \cdot v_i = v_1$$;
@@ -89,7 +90,7 @@ Note que, como essas matrizes serão obtidas treinando o modelo focando na captu
 
 Perceba que a intuição de que as matrizes Q, K, V serão capazes de capturar inteiramente as características de contexto pode parecer frágil. Ainda pensando que existem diversos contextos diferentes (semânticos) em uma mesma frase. Essas matrizes poderiam se especializar em representar o contexto de forma análoga ao embedding... (Afinal, de certa forma embedding também considera contexto).
 
-Daí surge o conceito de multi-headed Attention. Introduzimos diversas Q, K, V... Isto é, várias camadas da figura 1. Desse modo, teremos, ao final do processo, um embedding contextualizado para cada camada. A ideia é que cada um desses vetores $y$ seja uma representação contextual diferente da palavra em relação à frase.
+Daí surge o conceito de multi-headed Attention. Introduzimos diversas Q, K, V... Isto é, várias camadas da figura 1. Desse modo, teremos, ao final do processo, um embedding contextualizado para cada camada. A ideia é que cada um desses vetores $$y$$ seja uma representação contextual diferente da palavra em relação à frase.
 
 Então, como queremos somente um vetor que contenha toda essa informação, concatenaremos esses vetores $$y$$ e depois o fazemos passar por uma matriz de pesos W que fará esse vetor concatenado ter a dimensão (tamanho) desejado para y.
 
