@@ -10,7 +10,7 @@ Até mesmo pelo fato do input ser sequencial.
 Questão sobre paralelismo em RNNs e Transformers
 {% endhint %}
 
-Agora, no caso de Transformers, essa ideia de sequencialidade nas palavras de input não são inerentes à arquitetura do modelo. $$\rightarrow$$ Reflita sobre como o mecanismo de Self-Attention funciona sem ideia de sequencialidade.
+Agora, no caso de Transformers, essa ideia de sequencialidade nas palavras de input não são inerentes à arquitetura do modelo. → Reflita sobre como o mecanismo de Self-Attention funciona sem ideia de sequencialidade.
 
 Apesar disso, é evidente que a posição das palavras em uma frase tem muita importância na interpretação do seu significado naquela frase.
 

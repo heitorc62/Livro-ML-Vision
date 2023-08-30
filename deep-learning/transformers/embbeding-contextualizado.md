@@ -20,14 +20,14 @@ Considerando que Masked Self Attention faz com que o modelo não roube durante o
 {% hint style="info" %}
 Input do decoder é diferente em treinamento e inferência:
 
-* Treinamento: frase inteira $$\rightarrow$$ paralelização.
+* Treinamento: frase inteira → paralelização.
 * Inferência: uma palavra por vez. Inferência precisa da natureza sequencial.
 {% endhint %}
 
 {% hint style="warning" %}
 Em treinamento a frase predita **y** é predita de uma só vez? Todas as palavras simultaneamente?
 
-Input diferente $$\Rightarrow$$ output diferente?
+Input diferente ⇒ output diferente?
 
 Acho que isso faz sentido. Talvez possamos inferir todas as próximas palavras simultaneamente.
 {% endhint %}
@@ -83,7 +83,7 @@ Após Softmax, cada $$-\infty$$ se torna 0
 
 Desse modo, perceba que, apesar da frase inteira estar disponível, a matriz de Self-Attention resultante estará simulando o que ocorre em tempo de inferência.
 
-Ou seja, $$t_1$$ só pode ter relação contextual analisada com $$t_1$$. $$\rightarrow$$ Somente $$t_1t_1$$.
+Ou seja, $$t_1$$ só pode ter relação contextual analisada com $$t_1$$. → Somente $$t_1t_1$$.
 
 $$t_2$$ pode ter relação com $$t_1$$ e $$t_2$$. $$\Rightarrow t_2t_1;t_2t_2$$.
 
