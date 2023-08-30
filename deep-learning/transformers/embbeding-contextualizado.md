@@ -109,7 +109,7 @@ Aqui, segundo um esquema de self-Attention muito semelhante ao ilustrado em (), 
 <img src="images/fig6.png" alt="Alt text for the image" width="300"/>
 </div>
 
-Agora, chegamos à etapa de Attention entre Encoder e Decoder. Esse conceito de Attention é muito semelhante ao proposto por \cite{attention}, no qual quantificamos a relação contextual da próxima palavra predita com todas as palavras da frase no idioma original.
+Agora, chegamos à etapa de Attention entre Encoder e Decoder. Esse conceito de Attention é muito semelhante ao proposto por Attention[^2], no qual quantificamos a relação contextual da próxima palavra predita com todas as palavras da frase no idioma original.
 
 Perceba que se formos utilizar a analogia de Q, K, V nesse caso de Encoder-Decoder Attention, poderemos pensar em um esquema como o seguinte:
 
@@ -139,9 +139,11 @@ O Encoder é treinado juntamente com o Decoder no contexto de tradução de text
 {% endhint %}
 
 {% hint style="info" %}
-Acredito que, nessa abordagem de Transformer, como mostrado em \cite{self-attention}, Encoder e Decoder são trainados em conjuntom como uma mesma rede (que são)
+Acredito que, nessa abordagem de Transformer, como mostrado em Self-attention[^1], Encoder e Decoder são trainados em conjuntom como uma mesma rede (que são)
 
 Contudo, as arquiteturas Encoder/Decoder poderiam ser treinadas separadamente. Por exemplo as aquiteruras Encoder only (BERT) e Decoder only (GPT)
 {% endhint %}
 
+
+[^2]: Bahdanau, D., Cho, K., and Bengio, Y. (2014). Neural machine translation by jointly learning to align and translate.
 

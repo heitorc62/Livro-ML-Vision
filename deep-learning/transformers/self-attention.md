@@ -1,6 +1,6 @@
 # Self-Attention
 
-A diferença principal entre os conceitos de Attention e Self-Attention \citep{self-attention} é a seguinte:
+A diferença principal entre os conceitos de Attention e Self-Attention[^1] é a seguinte:
 
 {% hint style="info" %}
 Quando falamos do conceito de Attention estamos tentando "alinhar" uma palavra na frase de saída com a palavra correspondente na frase de entrada.
@@ -103,3 +103,6 @@ Como funciona o treinamento para ajuste de pesos Q, K, V e W?
 
 Acho que precisamos chegar ao final do decoder para começar a visualizar isso
 {% endhint %}
+
+
+[^1]: Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., and Polosukhin, I. (2017). Attention is all you need.
