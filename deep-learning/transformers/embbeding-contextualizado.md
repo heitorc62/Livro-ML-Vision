@@ -4,7 +4,9 @@ Como vamos do embedding contextualizado entregue pelo encoder de Transformer par
 
 A partir de uma perspectiva de muito alto nível, o encoder e o decoder interagem da seguinte maneira:
 
+<div align="center">
 <img src="images/fig4.png" alt="Alt text for the image" width="300"/>
+</div>
 
 {% hint style="warning" %}
 Novas matrizes K e V?
@@ -67,8 +69,9 @@ Como os Transformers lidam com a geração de frases traduzidas que tenham compr
 Isso depende de quando o $$<$$EOS$$>$$ será predito. Podemos lembrar do funcionamento de RNNs.
 {% endhint %}
 
-
+<div align="center">
 <img src="images/masked0.png" alt="Alt text for the image" width="300"/>
+</div>
 
 Onde o elemento $$ij$$ denota a intensidade da relação contextual entre as palavras $$t_i$$ e $$t_j$$.
 
@@ -76,7 +79,9 @@ Agora, perceba que, em momento de treinamento, como já possuímos a frase tradu
 
 Nesse ponto, entra o conceito de Masked Self-Attention A ideia aqui é transformar a matriz de Sel-Attention (ilustrada anteriormente) em algo do tipo:
 
+<div align="center">
 <img src="images/masked1.png" alt="Alt text for the image" width="300"/>
+</div>
 
 {% hint style="info" %}
 Após Softmax, cada $$-\infty$$ se torna 0
@@ -100,13 +105,17 @@ Primeiro obtemos a matriz de self-attention e a utilizamos para obter o embeddin
 
 Aqui, segundo um esquema de self-Attention muito semelhante ao ilustrado em (), no momento de treinamento, cada palavra da frase traduzida origina um vetor $$y$$:
 
+<div align="center">
 <img src="images/fig6.png" alt="Alt text for the image" width="300"/>
+</div>
 
 Agora, chegamos à etapa de Attention entre Encoder e Decoder. Esse conceito de Attention é muito semelhante ao proposto por \cite{attention}, no qual quantificamos a relação contextual da próxima palavra predita com todas as palavras da frase no idioma original.
 
 Perceba que se formos utilizar a analogia de Q, K, V nesse caso de Encoder-Decoder Attention, poderemos pensar em um esquema como o seguinte:
 
+<div align="center">
 <img src="images/fig7.png" alt="Alt text for the image" width="300"/>
+</div>
 
 Desse modo, cada vetor contextualizado resultado do Encoder é relacionado com cada vetor contextualizado da palavra sendo predita com as palavras da frase original. Obtemos scores dessa relação. A palavra mais relacionada terá maior score e, então, influenciará mais o output.
 

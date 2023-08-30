@@ -23,9 +23,9 @@ $$
 
 Como o valor do cosseno será maior para $$\theta$$ pequeno, esse produto escalar nos dará valores altos para palavras cujos embeddings estão próximos no espaço n-dimensional.
 
-
+<div align="center">
 <img src="images/fig1.png" alt="Alt text for the image" width="300"/>
-
+</div>
 
 
 Depois disso, normalizamos os valores desses scores com Softmax.
@@ -42,7 +42,9 @@ w_{ij} = \text{softmax}(s_{ij}) = \dfrac{e^{s_{ij}}}{\sum^n_{k=1}s_{ik}}
 $$
 Aqui, cada vetor de score $$(s_1, \ldots, s_n)$$ estará normalizado tal que $$\sum^n_{i=1}w_i = 1$$.
 
+<div align="center">
 <img src="images/fig2.png" alt="Alt text for the image" width="300"/>
+</div>
 
 Agora, nós vamos utilizar esses vetores de pesos $$(w_i)$$ como segue:
 $$
@@ -84,8 +86,9 @@ Para abordar essa questão, inserimos matrizes de pesos treináveis (Q, K, V) pa
 Note que, como essas matrizes serão obtidas treinando o modelo focando na captura de informação sobre contexto, elas serão capazes de explorar as características de contexto melhor que o embedding cru. Isso faz sentido?}
 {% endhint %}
 
+<div align="center">
 <img src="images/fig3.png" alt="Alt text for the image" width="300"/>
-
+</div>
 
 
 Perceba que a intuição de que as matrizes Q, K, V serão capazes de capturar inteiramente as características de contexto pode parecer frágil. Ainda pensando que existem diversos contextos diferentes (semânticos) em uma mesma frase. Essas matrizes poderiam se especializar em representar o contexto de forma análoga ao embedding... (Afinal, de certa forma embedding também considera contexto).
