@@ -35,7 +35,9 @@ Acho que isso faz sentido. Talvez possamos inferir todas as próximas palavras s
 ## Masked Selft-Attention
 Na prática, quando estamos falando de Transformers Decoder, temos a seguinte figura esquemática:
 
+<div align="center">
 <img src="images/fig5.png" alt="Alt text for the image" width="300"/>
+</div>
 
 Aqui, o podemos diferenciar o funcionamento do decoder em estágio de treinamento e inferência. Primeiramente trataremos do período de treinamento.
 
