@@ -144,6 +144,6 @@ Acredito que, nessa abordagem de Transformer, como mostrado em Self-attention[^1
 Contudo, as arquiteturas Encoder/Decoder poderiam ser treinadas separadamente. Por exemplo as aquiteruras Encoder only (BERT) e Decoder only (GPT)
 {% endhint %}
 
-
+[^1]: Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., and Polosukhin, I. (2017). Attention is all you need.
 [^2]: Bahdanau, D., Cho, K., and Bengio, Y. (2014). Neural machine translation by jointly learning to align and translate.
 
