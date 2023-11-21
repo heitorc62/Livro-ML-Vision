@@ -61,6 +61,7 @@
 * [Redes Recorrentes](deep-learning/redes-recorrentes/README.md)
   * [Attention](deep-learning/redes-recorrentes/attention.md)
 * [Transformers](deep-learning/transformers/README.md)
+  * [Bibliografia](deep-learning/transformers/bibliografia.md)
   * [Self-Attention](deep-learning/transformers/self-attention.md)
   * [Transformer's Encoder](deep-learning/transformers/transformers-encoder.md)
   * [Positional Encoding](deep-learning/transformers/positional-encoding.md)

@@ -2,6 +2,8 @@
 
 A diferença principal entre os conceitos de Attention e Self-Attention[^1] é a seguinte:
 
+\[[Vaswani2017](bibliografia.md)]
+
 {% hint style="info" %}
 Quando falamos do conceito de Attention estamos tentando "alinhar" uma palavra na frase de saída com a palavra correspondente na frase de entrada.
 
@@ -11,12 +13,15 @@ Agora, em Self-Attention, a ideia é fazer um embedding diferenciado de cada pal
 O mecanismo de Self-Attention associa pesos às palavras vizinhas em uma frase de modo que as palavras vizinhas com os maiores pesos têm maior relevância contextual em relação à palavra sendo analisada.
 
 ## Como obter esses vetores contextualizados? Novo embedding?
-Agora, como podemos obter esses pesos que são associados às palavras em uma frase (vetores de contexto)?
-O primeiro passo é definir um vetor $$s_{ij}$$ tal que:
+
+Agora, como podemos obter esses pesos que são associados às palavras em uma frase (vetores de contexto)? O primeiro passo é definir um vetor $$s_{ij}$$ tal que:
+
 $$
 s_{ij} = v_i \cdot v_j
 $$
+
 Isso é o produto escalar entre as palavras $$v_i$$ e $$v_j$$. Note que, por definição,
+
 $$
 v_i \cdot v_j = \|v_i\|\|v_j\|\cos{\theta}
 $$
@@ -24,29 +29,33 @@ $$
 Como o valor do cosseno será maior para $$\theta$$ pequeno, esse produto escalar nos dará valores altos para palavras cujos embeddings estão próximos no espaço n-dimensional.
 
 <div align="center">
-<img src="images/fig1.png" alt="Alt text for the image" width="300"/>
+
+<img src="images/fig1.png" alt="Alt text for the image" width="300">
+
 </div>
 
-
 Depois disso, normalizamos os valores desses scores com Softmax.
-
-
 
 {% hint style="info" %}
 Note que esse peocesso é muito semelhante ao processo de obtenção dos pesos $$\alpha_{ij}$$ em Attention. A diferença é que, naquele caso, fazíamos score de semelhança entre uma palavra do output para cada vetor de contexto do input. Já aqui, fazemos isso entre as palavras do input (no encoder).
 {% endhint %}
 
 ## Normalizando
+
 $$
 w_{ij} = \text{softmax}(s_{ij}) = \dfrac{e^{s_{ij}}}{\sum^n_{k=1}s_{ik}}
 $$
+
 Aqui, cada vetor de score $$(s_1, \ldots, s_n)$$ estará normalizado tal que $$\sum^n_{i=1}w_i = 1$$.
 
 <div align="center">
-<img src="images/fig2.png" alt="Alt text for the image" width="300"/>
+
+<img src="images/fig2.png" alt="Alt text for the image" width="300">
+
 </div>
 
 Agora, nós vamos utilizar esses vetores de pesos $$(w_i)$$ como segue:
+
 $$
 y_i = \sum^n_{j=1}w_{ij} \cdot v_j
 $$
@@ -58,7 +67,6 @@ O vetor $$y_i$$ será mais influenciado pelas palavras $$v_j$$ tais que $$w_{ij}
 {% endhint %}
 
 $$y_i$$ é a forma contextualizada do vetor $$v_i$$. Note que o termo $$w_{ij} \cdot v_i$$ de $$y_i$$ é tal que $$w_{ij} \cdot v_i = v_1$$;
-
 
 {% hint style="info" %}
 Nesse ponto, há considerações importantes.
@@ -72,7 +80,8 @@ Assim, esses vetores estão sendo colocados de maneira crua nessas operações, 
 
 Isso não faz sentido, pois somente o embedding cru (usado nos vetores de palavras e no dot product) não será suficiente para explorar o contexto da frase.
 
-Imagine que, se isso acontecesse, no espaço n-dimensional poderia ocorrer de: 
+Imagine que, se isso acontecesse, no espaço n-dimensional poderia ocorrer de:
+
 $$
 \|v_1\| << \|v_2\|
 $$
@@ -87,9 +96,10 @@ Note que, como essas matrizes serão obtidas treinando o modelo focando na captu
 {% endhint %}
 
 <div align="center">
-<img src="images/fig3.png" alt="Alt text for the image" width="300"/>
-</div>
 
+<img src="images/fig3.png" alt="Alt text for the image" width="300">
+
+</div>
 
 Perceba que a intuição de que as matrizes Q, K, V serão capazes de capturar inteiramente as características de contexto pode parecer frágil. Ainda pensando que existem diversos contextos diferentes (semânticos) em uma mesma frase. Essas matrizes poderiam se especializar em representar o contexto de forma análoga ao embedding... (Afinal, de certa forma embedding também considera contexto).
 
@@ -97,12 +107,10 @@ Daí surge o conceito de multi-headed Attention. Introduzimos diversas Q, K, V..
 
 Então, como queremos somente um vetor que contenha toda essa informação, concatenaremos esses vetores $$y$$ e depois o fazemos passar por uma matriz de pesos W que fará esse vetor concatenado ter a dimensão (tamanho) desejado para y.
 
-
 {% hint style="warning" %}
 Como funciona o treinamento para ajuste de pesos Q, K, V e W?
 
 Acho que precisamos chegar ao final do decoder para começar a visualizar isso
 {% endhint %}
-
 
 [^1]: Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., and Polosukhin, I. (2017). Attention is all you need.
